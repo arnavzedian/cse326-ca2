@@ -25,6 +25,7 @@ const Email = styled.input`
   border: none;
   box-sizing: border-box;
   padding: 15px;
+  outline: none;
   width: 100%;
   border-radius: 50px 50px 0 0;
   border-bottom: 2px solid #111;
@@ -33,6 +34,7 @@ const Email = styled.input`
 const Message = styled.textarea`
   border: none;
   resize: none;
+  outline: none;
   width: 100%;
   box-sizing: border-box;
   padding: 15px;
