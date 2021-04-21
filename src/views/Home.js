@@ -8,21 +8,24 @@ import RightPanel from "../widgets/RightPanel";
 const Column = styled.div`
   flex-direction: column;
   display: flex;
+  width: 100vw;
 `;
 
 const Row = styled.div`
   flex-direction: row;
   display: flex;
+  width: 100vw;
 `;
 
 function Widget() {
-  let [currentTab, setTab] = useState("Home");
+  const [currentTab, setTab] = useState("Home");
 
   return (
     <Column>
-      <Header />
+      <Header currentTab={currentTab} setTab={setTab} />
       <Row>
-        <LeftPanel></LeftPanel> <RightPanel></RightPanel>
+        <LeftPanel></LeftPanel>{" "}
+        <RightPanel currentTab={currentTab} setTab={setTab}></RightPanel>
       </Row>
     </Column>
   );

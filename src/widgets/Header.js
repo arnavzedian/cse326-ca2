@@ -29,24 +29,38 @@ const Logo = styled.div`
   padding: 0 5vw;
 `;
 
-function Widget() {
+function Widget({ currentTab, setTab }) {
   let logoWidget = (
     <Logo>
       <span>Sikho</span>
     </Logo>
   );
 
-  let allTabs = (
-    <Tabs>
-      <Tab active={true}>Home</Tab>
-      <Tab>Videos</Tab>
-      <Tab>Tutor</Tab>
-      <Tab>Test Yourself</Tab>
-      <Tab>Contact Us</Tab>
-    </Tabs>
-  );
+  let tabList = [];
+  let allTabNames = ["Home", "Videos", "Tutor", "Test Yourself", "Contact Us"];
 
-  return <Header>{[logoWidget, allTabs]}</Header>;
+  for (let tab of allTabNames) {
+    function setter() {
+      console.log(tab);
+      setTab(tab);
+    }
+
+    if (currentTab == tab) {
+      tabList.push(
+        <Tab key={tab} onClick={setter} active={true}>
+          {tab}
+        </Tab>
+      );
+    } else {
+      tabList.push(
+        <Tab key={tab} onClick={setter}>
+          {tab}
+        </Tab>
+      );
+    }
+  }
+
+  return <Header>{[logoWidget, <Tabs>{tabList}</Tabs>]}</Header>;
 }
 
 export default Widget;

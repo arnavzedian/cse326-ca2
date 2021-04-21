@@ -26,9 +26,9 @@ const Button = styled.button`
   }
 `;
 
-function Widget({ active, children }) {
+function Widget({ active, children, onClick }) {
   return (
-    <Button id="onHover" active={active}>
+    <Button onClick={onClick} active={active}>
       {children}
     </Button>
   );

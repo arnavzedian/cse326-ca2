@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "./Button";
+import HomeWidgets from "./HomeWidgets";
+import VideoWidgets from "./VideoWidgets";
+import TutorWidgets from "./TutorWidgets";
+import TestYourselfWidgets from "./TestYourselfWidgets";
+import ContactUsWidgets from "./ContactUsWidgets";
 const Main = styled.div`
   flex-direction: Column;
   display: flex;
@@ -23,41 +27,16 @@ const Heading = styled.h1`
   margin-top: 50px;
 `;
 
-function Widget({ text }) {
-  return (
-    <Main>
-      <Heading>Introduction</Heading>
-      <Context>
-        Sunt aute id excepteur cillum adipisicing excepteur laborum aute eu
-        minim nulla eu deserunt. Tempor tempor consequat amet ea consequat Lorem
-        officia Lorem officia pariatur. Consectetur anim occaecat tempor
-        cupidatat excepteur mollit ad consequat commodo. Voluptate id
-        exercitation duis quis duis esse non labore aute occaecat ad velit
-        voluptate ea. Sunt nostrud culpa nostrud occaecat qui. Ullamco laborum
-        incididunt culpa nisi aliquip. Ad nulla sit ea eu in ad ea incididunt
-        laboris pariatur id ad. Elit aliqua magna adipisicing aliqua sunt
-        ullamco consequat fugiat esse voluptate ut magna quis. Mollit culpa
-        fugiat reprehenderit id quis ullamco est sunt sit. Anim pariatur ut
-        laborum Lorem ullamco. Cillum ullamco ut duis Lorem. Veniam dolor aliqua
-        officia enim cupidatat sunt tempor irure ullamco est non ex velit.
-      </Context>
-      <Heading>Content</Heading>
-      <Context>
-        Sunt aute id excepteur cillum adipisicing excepteur laborum aute eu
-        minim nulla eu deserunt. Tempor tempor consequat amet ea consequat Lorem
-        officia Lorem officia pariatur. Consectetur anim occaecat tempor
-        cupidatat excepteur mollit ad consequat commodo. Voluptate id
-        exercitation duis quis duis esse non labore aute occaecat ad velit
-        voluptate ea. Sunt nostrud culpa nostrud occaecat qui. Ullamco laborum
-        incididunt culpa nisi aliquip. Ad nulla sit ea eu in ad ea incididunt
-        laboris pariatur id ad. Elit aliqua magna adipisicing aliqua sunt
-        ullamco consequat fugiat esse voluptate ut magna quis. Mollit culpa
-        fugiat reprehenderit id quis ullamco est sunt sit. Anim pariatur ut
-        laborum Lorem ullamco. Cillum ullamco ut duis Lorem. Veniam dolor aliqua
-        officia enim cupidatat sunt tempor irure ullamco est non ex velit.
-      </Context>
-    </Main>
-  );
+function Widget({ currentTab }) {
+  let relation = {};
+  relation["Home"] = <HomeWidgets></HomeWidgets>;
+  relation["Videos"] = <VideoWidgets></VideoWidgets>;
+  relation["Tutor"] = <TutorWidgets></TutorWidgets>;
+  relation["Test Yourself"] = <TestYourselfWidgets></TestYourselfWidgets>;
+  relation["Contact Us"] = <ContactUsWidgets></ContactUsWidgets>;
+
+  console.log(currentTab, relation[currentTab]);
+  return relation[currentTab];
 }
 
 export default Widget;
