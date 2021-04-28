@@ -1,6 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import home from "../assets/home.svg";
+import videos from "../assets/videos.svg";
+import tutor from "../assets/tutor.svg";
+import testYourself from "../assets/test-yourself.svg";
+import contactUs from "../assets/contact-us.svg";
 import Tab from "./Tab";
+
+const Icon = styled.img``;
+
+const Span = styled.div``;
+
 const Header = styled.div`
   flex-direction: row;
   display: flex;
@@ -16,6 +26,7 @@ const Tabs = styled.div`
   flex-direction: row;
   display: flex;
   margin-right: 65px;
+  align-items: flex-end;
   gap: 65px;
 `;
 
@@ -37,9 +48,15 @@ function Widget({ currentTab, setTab }) {
   );
 
   let tabList = [];
-  let allTabNames = ["Home", "Videos", "Tutor", "Test Yourself", "Contact Us"];
+  let allTabNames = {
+    Home: home,
+    Videos: videos,
+    Tutor: tutor,
+    "Test Yourself": testYourself,
+    "Contact Us": contactUs,
+  };
 
-  for (let tab of allTabNames) {
+  for (let tab in allTabNames) {
     function setter() {
       console.log(tab);
       setTab(tab);
@@ -48,13 +65,15 @@ function Widget({ currentTab, setTab }) {
     if (currentTab == tab) {
       tabList.push(
         <Tab key={tab} onClick={setter} active={true}>
-          {tab}
+          <Icon src={allTabNames[tab]} />
+          <Span>{tab}</Span>
         </Tab>
       );
     } else {
       tabList.push(
         <Tab key={tab} onClick={setter}>
-          {tab}
+          <Icon src={allTabNames[tab]} />
+          <Span>{tab}</Span>
         </Tab>
       );
     }

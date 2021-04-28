@@ -7,12 +7,20 @@ const Button = styled.button`
   border: 2px solid #111;
   cursor: pointer;
   background: #fff;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  flex-direction: row;
   border-bottom: none;
+  gap: 10px;
+  align-items: center;
+  height: 80px;
   margin-bottom: -2px;
   ${({ active }) => {
     if (!active)
       return `
-    opacity:0.5; 
+    opacity:0.3; 
+    height:50px;
+    border-bottom:none;
     margin-bottom:0;
     `;
   }}
@@ -21,8 +29,10 @@ const Button = styled.button`
 
   :hover {
     opacity: 1;
-    background-color: ${({ active }) => (active == true ? "#fff" : "#111")};
-    color: ${({ active }) => (active == true ? "#111" : "#fff")};
+    /* border: 2px solid #fff; */
+    filter: invert(${({ active }) => (active == true ? "0" : "1")});
+    /* background-color: ${({ active }) => (active == true ? "#fff" : "#111")};
+    color: ${({ active }) => (active == true ? "#111" : "#fff")}; */
   }
 `;
 
